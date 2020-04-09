@@ -22,12 +22,7 @@ function getNowDateString()
 
 function ajaxCallJsonp(target){
 	alert("111");
-	var data = $.getJSON(target,
-	{
-		tags: "mount rainier",
-		tagmode: "any",
-		format: "json"
-	});
+	var data = $.getJSON(target,{});
 	
 	alert("222");
 	//成功得到資料
