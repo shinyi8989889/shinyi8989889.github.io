@@ -50,12 +50,11 @@ function ajaxCallJsonp(target){
 	
 	//取得資料失敗
 	data.error(function( msg ) {
-		$("#idLeftParking").text("fail");
+		$("#idCarTotal").text("fail");
 		//$("#result").html("fail getting data");
 	});
 
 }
 
-alert("AAAD");
 ajaxCallJsonp("https://pss-ya167.sites.ichenparking.com.tw/space/api/get_site_space_info");
 
