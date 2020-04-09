@@ -38,6 +38,7 @@ function ajaxCallJsonp(target){
 			"<tr><td>機車</td><td>"+msg.motor.total+"</td><td style='color:red;'>"+msg.motor.remain+"</td></tr><tr><td colspan='3'>更新時間："+getNowDateString()+"</td></tr></table>"
 		);
 		*/
+		alert("5555");
 		var d = msg;
 		$("#idCarTotal").html(d.car.total);
 		$("#idCarLeft").html(d.car.remain);
