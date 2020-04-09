@@ -34,12 +34,11 @@ function ajaxCallJsonp(target){
 	data.error(function( msg ) {
 		alert("444");
 		$("#idCarTotal").text("fail");
-		//$("#result").html("fail getting data");
 	});
 
 }
 
-//ajaxCallJsonp("https://pss-ya167.sites.ichenparking.com.tw/space/api/get_site_space_info");
+
 
 function ajaxURL(URL)
 {	
@@ -61,4 +60,4 @@ function ajaxURL(URL)
 	});
 }
 
-ajaxURL("https://pss-ya167.sites.ichenparking.com.tw/space/api/get_site_space_info");
+ajaxURL("api");
