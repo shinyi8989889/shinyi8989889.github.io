@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta name="viewport" content="width=device-width, initial-scale=1"> <!-- RWD -->
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+		<title>即時車位查詢</title>
+		
+		<!-- jquery & jquery ui -->
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+		
+		<!-- app style -->
+		<link type="text/css" href="ss.css" rel="stylesheet" />
+	</head>
+
+	<body>
+		<div id="idMainWrap" style='position:absolute;top:0px;left:0px;bottom:0px;right:0px;'>
+			<div>
+				<!-- 標題 -->
+				<table class='cLayOutTable' style="width:100%;text-align:center;background:#2D99AA;border-bottom:2px #444444 solid;">
+					<img src='img/logo/logo_s.png'>
+					<tr>
+						<td width="40%" style="text-align:left;padding-left:10px;">
+							<span class="cTopTitle">
+								<font style="color:#FFFFFF">☣ </font><font style="color:#FFFFFF">即時車位查詢</font>
+							</span>
+							<span id="result" style="margin-left: 20px;"></span>
+						</td>
+					</tr>
+				</table>
+			
+				<div id="idMainCont"  style="position:relative;">
+					<div style="position: relative; margin-top: 50px;width: 80%;left: 10%;" class="cFieldset">					
+						<div class="cLegend">汽車</div>					
+						<label>總車位數<span id="idCarTotal" style=" margin-left: 15%; width:60%"></span></label></br>
+						<label>剩餘車位<span id="idCarLeft" style="color: brown; margin-left: 15%; width:60%"></span></label></br>
+						<label>更新時間<span id="idCarUpdateTime" style=" margin-left: 15%; width:60%"></span></label>
+					</div>	
+
+					<div style="position: relative; margin-top: 50px;width: 80%;left: 10%;" class="cFieldset">					
+						<div class="cLegend">機車</div>					
+						<label>總車位數<span id="idMotTotal" style=" margin-left: 15%; width:60%"></span></label></br>
+						<label>剩餘車位<span id="idMotLeft" style="color: brown; margin-left: 15%; width:60%"></span></label></br>
+						<label>更新時間<span id="idMotUpdateTime" style=" margin-left: 15%; width:60%"></span></label>
+					</div>
+				</div>
+					
+				<!-- 底部 -->
+				<div style="background:#434343;color:#FFFFFF;text-align:center;font-size:14px;padding:3px;letter-spacing:2px;">
+					© 2020 v1.0  
+				</div>
+			</div>
+		</div>		
+
+</body>
+
+<script> 
+
+	function parking_list_load()
+	{
+		//ajaxURL("https://pss-ya167.sites.ichenparking.com.tw/space/api/get_site_space_info",parking_list_load_cb);
+
+		//jsonp
+		//ajaxCallJsonp("https://pss-ya167.sites.ichenparking.com.tw/space/api/get_site_space_info");
+
+		//var data = {method:"list"};
+		ajaxAH('parking',null,parking_list_load_cb);
+		
+	}
+	
+	function parking_list_load_cb(d)
+	{
+		// $("#result").html(json.car.total);
+		//
+		var d = JSON.parse(d.data);
+		$("#idCarTotal").html(d.car.total);
+		$("#idCarLeft").html(d.car.remain);
+		$("#idCarUpdateTime").html(getNowDateString());
+
+		$("#idMotTotal").html(d.motor.total);
+		$("#idMotLeft").html(d.motor.remain);
+		$("#idMotUpdateTime").html(getNowDateString());
+
+	}
+
+	function ajaxCallJsonp(target){
+	    
+	    var data = $.getJSON(target,
+	    {
+	        tags: "mount rainier",
+	        tagmode: "any",
+	        format: "json"
+	    });
+
+	    //成功得到資料
+	    data.success(function( msg ) {
+	    	$("#result").text("success");  	
+        $.each(msg.items, function(i,item){         
+              $("#result").html();
+              $("#result").append($("<img/>").attr("src", item.media.m));	       
+              if ( i == 3 ) {
+                  return false;
+              }
+        });        
+	    });
+
+	    //取得資料失敗
+	    data.error(function( msg ) {
+	    	$("#result").text("fail");
+	        //$("#result").html("fail getting data");
+	    });
+	}
+
+	parking_list_load();
+</script>
+</html>
+
+
