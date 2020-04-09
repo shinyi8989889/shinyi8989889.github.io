@@ -46,7 +46,7 @@
 				</div>
 					
 				<!-- 底部 -->
-				<div style="position:absolute;bottom:0px;left:0px;background:#434343;color:#FFFFFF;text-align:center;font-size:14px;padding:3px;letter-spacing:2px;">
+				<div style="position:absolute;bottom:0px;left:0px;background:#434343;color:#FFFFFF;text-align:center;font-size:16px;padding:5px;letter-spacing:2px;">
 					© 2020 v1.0  
 				</div>
 			</div>
@@ -54,65 +54,7 @@
 
 </body>
 
-<script> 
-
-	function parking_list_load()
-	{
-		//ajaxURL("https://pss-ya167.sites.ichenparking.com.tw/space/api/get_site_space_info",parking_list_load_cb);
-
-		//jsonp
-		//ajaxCallJsonp("https://pss-ya167.sites.ichenparking.com.tw/space/api/get_site_space_info");
-
-		//var data = {method:"list"};
-		ajaxAH('parking',null,parking_list_load_cb);
-		
-	}
-	
-	function parking_list_load_cb(d)
-	{
-		// $("#result").html(json.car.total);
-		//
-		var d = JSON.parse(d.data);
-		$("#idCarTotal").html(d.car.total);
-		$("#idCarLeft").html(d.car.remain);
-		$("#idCarUpdateTime").html(getNowDateString());
-
-		$("#idMotTotal").html(d.motor.total);
-		$("#idMotLeft").html(d.motor.remain);
-		$("#idMotUpdateTime").html(getNowDateString());
-
-	}
-
-	function ajaxCallJsonp(target){
-	    
-	    var data = $.getJSON(target,
-	    {
-	        tags: "mount rainier",
-	        tagmode: "any",
-	        format: "json"
-	    });
-
-	    //成功得到資料
-	    data.success(function( msg ) {
-	    	$("#result").text("success");  	
-        $.each(msg.items, function(i,item){         
-              $("#result").html();
-              $("#result").append($("<img/>").attr("src", item.media.m));	       
-              if ( i == 3 ) {
-                  return false;
-              }
-        });        
-	    });
-
-	    //取得資料失敗
-	    data.error(function( msg ) {
-	    	$("#result").text("fail");
-	        //$("#result").html("fail getting data");
-	    });
-	}
-
-	parking_list_load();
-</script>
+<script src="parking.js"></script> 
 </html>
 
 
