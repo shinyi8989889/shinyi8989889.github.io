@@ -21,24 +21,18 @@ function getNowDateString()
 }
 
 function ajaxCallJsonp(target){
-	
+	alert("111");
 	var data = $.getJSON(target,
 	{
 		tags: "mount rainier",
 		tagmode: "any",
 		format: "json"
 	});
-
+	
+	alert("222");
 	//成功得到資料
 	data.success(function( msg ) {
-		/*
-		$("#idLeftParking").html(
-			"<table border='1' style='text-align:center;'><tr><td></td><td>總車位數</td><td>剩餘車位數</td></tr>"+
-			"<tr><td>汽車</td><td>"+msg.car.total+"</td><td style='color:red;'>"+msg.car.remain+"</td></tr>"+
-			"<tr><td>機車</td><td>"+msg.motor.total+"</td><td style='color:red;'>"+msg.motor.remain+"</td></tr><tr><td colspan='3'>更新時間："+getNowDateString()+"</td></tr></table>"
-		);
-		*/
-		alert("5555");
+		alert("333");
 		var d = msg;
 		$("#idCarTotal").html(d.car.total);
 		$("#idCarLeft").html(d.car.remain);
@@ -51,6 +45,7 @@ function ajaxCallJsonp(target){
 	
 	//取得資料失敗
 	data.error(function( msg ) {
+		alert("444");
 		$("#idCarTotal").text("fail");
 		//$("#result").html("fail getting data");
 	});
