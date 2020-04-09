@@ -30,14 +30,23 @@ function ajaxCallJsonp(target){
 
 	//成功得到資料
 	data.success(function( msg ) {
-		var dt = new Date();
+		/*
 		$("#idLeftParking").html(
 			"<table border='1' style='text-align:center;'><tr><td></td><td>總車位數</td><td>剩餘車位數</td></tr>"+
 			"<tr><td>汽車</td><td>"+msg.car.total+"</td><td style='color:red;'>"+msg.car.remain+"</td></tr>"+
 			"<tr><td>機車</td><td>"+msg.motor.total+"</td><td style='color:red;'>"+msg.motor.remain+"</td></tr><tr><td colspan='3'>更新時間："+getNowDateString()+"</td></tr></table>"
 		);
-	});
+		*/
+		var d = msg;
+		$("#idCarTotal").html(d.car.total);
+		$("#idCarLeft").html(d.car.remain);
+		$("#idCarUpdateTime").html(getNowDateString());
 
+		$("#idMotTotal").html(d.motor.total);
+		$("#idMotLeft").html(d.motor.remain);
+		$("#idMotUpdateTime").html(getNowDateString());
+	});
+	
 	//取得資料失敗
 	data.error(function( msg ) {
 		$("#idLeftParking").text("fail");
