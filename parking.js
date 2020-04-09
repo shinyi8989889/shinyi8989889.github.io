@@ -39,5 +39,26 @@ function ajaxCallJsonp(target){
 
 }
 
-ajaxCallJsonp("https://pss-ya167.sites.ichenparking.com.tw/space/api/get_site_space_info");
+//ajaxCallJsonp("https://pss-ya167.sites.ichenparking.com.tw/space/api/get_site_space_info");
 
+function ajaxURL(URL)
+{	
+	$.ajax({
+		url: URL,
+		type: 'GET',
+		dataType: "json",
+		contentType: "application/json; charset=utf-8",
+		success: function (d) {
+			if(d){
+				alert("ok");
+			}else{
+				alert("fail2");
+			}
+		},
+		error: function(){
+			alert("fail");
+		}
+	});
+}
+
+ajaxURL("https://pss-ya167.sites.ichenparking.com.tw/space/api/get_site_space_info");
