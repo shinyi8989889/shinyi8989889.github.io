@@ -33,14 +33,6 @@ function ajaxCallJsonp(target){
 	//成功得到資料
 	data.success(function( msg ) {
 		alert("333");
-		var d = msg;
-		$("#idCarTotal").html(d.car.total);
-		$("#idCarLeft").html(d.car.remain);
-		$("#idCarUpdateTime").html(getNowDateString());
-
-		$("#idMotTotal").html(d.motor.total);
-		$("#idMotLeft").html(d.motor.remain);
-		$("#idMotUpdateTime").html(getNowDateString());
 	});
 	
 	//取得資料失敗
